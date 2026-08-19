@@ -1,0 +1,20 @@
+# Python / MicroPython
+__pycache__/
+*.py[cod]
+
+# OpenMV IDE and editor state
+.openmv/
+.vscode/
+
+# Altium generated outputs (the native design files are tracked)
+hardware/altium/History/
+hardware/altium/Project Outputs for */
+hardware/altium/*.PrjPcbStructure
+hardware/altium/*.SchPreview
+hardware/altium/*.PcbDocPreview
+
+# Local media exports; add curated images to docs/assets/ explicitly
+*.mp4
+*.mov
+*.avi
+!docs/assets/*.mov

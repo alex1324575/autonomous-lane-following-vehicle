@@ -1,0 +1,32 @@
+# Validation checklist
+
+This checklist is intentionally a protocol, not a reconstructed claim of measurements that were not present in the recovered archive.
+
+## Bench bring-up
+
+- [ ] Confirm the board powers the camera, servo, motor driver, and IR sensor at their expected voltages.
+- [ ] Verify the camera image and threshold before connecting the drive motor.
+- [ ] With the wheels raised, check servo neutral and both steering limits.
+- [ ] Verify forward motor direction and brake command.
+- [ ] Confirm one timer window of IR edges produces a plausible RPM estimate.
+- [ ] Cover one lane marker and verify that the failsafe centers then brakes.
+
+## Track test record
+
+For every run, log the following in a CSV or notebook and retain a synchronized video if possible:
+
+| Field | Example |
+| --- | --- |
+| Firmware commit | `git rev-parse --short HEAD` |
+| Track / lighting | indoor, LED overhead, matte black track |
+| Threshold | `(215, 255)` |
+| Base motor duty | `85000 ns` |
+| Steering gains | `Kp=3.0, Ki=0.0, Kd=0.6` |
+| Speed feedback | disabled / enabled |
+| Outcome | completed / lane loss / mechanical issue |
+| Notes | turns, lighting transitions, observed oscillation |
+
+## Acceptance criteria for a renewed demonstration
+
+Define the track and metrics before running. A useful minimum is: complete a specified track for three consecutive runs without manual intervention, retain one uncut video, and record the exact firmware commit and calibration used.
+

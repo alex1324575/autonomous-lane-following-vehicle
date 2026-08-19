@@ -23,5 +23,10 @@ The PID output is limited to ±45° and mapped linearly around the servo's calib
 
 ## Speed measurement and optional speed loop
 
-The IR sensor increments an edge counter in an interrupt. A periodic timer ends the measurement window; RPM is estimated from gear marks and the configured gear-to-wheel ratio. The original code contained both the counter and a motor PID object, but left the duty adjustment commented out in the latest final loop. `ENABLE_SPEED_PID` is therefore `False` by default in the reconstruction. It is an implementation path, not a claim that it was freshly validated.
+The IR sensor increments an edge counter in an interrupt. A periodic timer ends the measurement window; RPM is estimated from gear marks and the configured gear-to-wheel ratio. The final report describes a motor PID that clamps its PWM adjustment and adds it to the base motor command.
 
+The latest recovered `main.py` retains the RPM path and motor PID object but leaves its PWM adjustment commented out. This repository preserves that distinction: `ENABLE_SPEED_PID` is `False` by default until the physical vehicle is recalibrated. The report is evidence of the final system design; the archived file is evidence of the particular recovered firmware snapshot.
+
+## Interfaces beyond the control loop
+
+The final report also documents an HC-06 Bluetooth header for wireless debugging and start/stop control, along with a current-sense feedback path from the H-bridge to the OpenMV. These interfaces are represented in the Altium design files but are not exercised by the recovered lane-following firmware.
